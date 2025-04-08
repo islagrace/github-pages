@@ -1,0 +1,238 @@
+import React from 'react';
+import { Globe, Book, Calendar, Utensils, PenTool, Gamepad2, MessageSquare, Info } from 'lucide-react';
+
+export default function Homepage() {
+  return (
+    <div className="font-sans bg-yellow-50 min-h-screen">
+      {/* Header */}
+      <header className="bg-red-600 py-4 px-6 shadow-md">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="text-yellow-300 text-3xl font-bold">China<span className="text-white">Discovery</span></div>
+            <span className="text-2xl">🐼</span>
+          </div>
+          <div className="text-white text-sm">A fun website about Chinese culture for kids!</div>
+        </div>
+      </header>
+      
+      {/* Main Navigation */}
+      <nav className="bg-red-500 py-2 px-6 flex justify-center shadow-md">
+        <div className="flex flex-wrap gap-2 md:gap-4">
+          <NavButton icon={<Globe size={20} />} label="History" />
+          <NavButton icon={<span className="text-lg">🐼</span>} label="Animals" />
+          <NavButton icon={<span className="text-lg">🏮</span>} label="Festivals" />
+          <NavButton icon={<Utensils size={20} />} label="Food" />
+          <NavButton icon={<PenTool size={20} />} label="Art" />
+          <NavButton icon={<Gamepad2 size={20} />} label="Games" />
+          <NavButton icon={<MessageSquare size={20} />} label="Language" />
+        </div>
+      </nav>
+      
+      {/* Welcome Banner */}
+      <section className="bg-gradient-to-r from-red-500 to-red-600 text-white py-8 px-6">
+        <div className="max-w-4xl mx-auto flex items-center flex-col md:flex-row">
+          <div className="md:w-1/3 flex justify-center mb-6 md:mb-0">
+            <div className="bg-white rounded-full w-40 h-40 flex items-center justify-center shadow-lg">
+              <span className="text-8xl">🐼</span>
+            </div>
+          </div>
+          <div className="md:w-2/3 text-center md:text-left md:pl-8">
+            <h1 className="text-3xl font-bold mb-2">Nǐ Hǎo! 你好! Hello!</h1>
+            <p className="text-xl">Welcome to my Chinese culture adventure! Join me to explore amazing history, animals, food, and more!</p>
+            <div className="mt-4">
+              <button className="bg-yellow-400 hover:bg-yellow-300 text-red-800 font-bold py-2 px-6 rounded-full shadow-md transition-colors">
+                Start Exploring!
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Featured Content */}
+      <section className="py-8 px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold text-red-800 mb-6 text-center">Featured Adventures</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <FeatureCard 
+              title="Chinese New Year" 
+              icon="🏮" 
+              description="Discover the fun traditions of the biggest Chinese festival!"
+              color="bg-red-100"
+            />
+            <FeatureCard 
+              title="Make a Dragon Puppet" 
+              icon="🐉" 
+              description="Follow our easy craft tutorial with printable template!"
+              color="bg-green-100"
+            />
+            <FeatureCard 
+              title="Count to 10 in Chinese" 
+              icon="🔢" 
+              description="Learn to count with our fun pronunciation guide!"
+              color="bg-blue-100"
+            />
+          </div>
+        </div>
+      </section>
+      
+      {/* Interactive Map */}
+      <section className="py-8 px-6 bg-yellow-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-red-800 mb-6 text-center">Explore China</h2>
+          
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <div className="aspect-w-16 aspect-h-9 bg-blue-50 rounded flex items-center justify-center">
+              <div className="relative w-3/4 h-3/4">
+                {/* Simple China map outline */}
+                <div className="absolute inset-0 bg-red-200 rounded-lg">
+                  {/* This would be replaced with an actual SVG map in a real implementation */}
+                  <div className="flex items-center justify-center h-full">
+                    <div className="text-center">
+                      <div className="text-6xl mb-4">🗺️</div>
+                      <div className="text-red-800 font-bold">Interactive Map</div>
+                      <div className="text-sm text-red-600">Click regions to discover fun facts!</div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Map hotspots - these would be properly positioned on the real map */}
+                <MapHotspot top="20%" left="80%" icon="🏯" label="Forbidden City" />
+                <MapHotspot top="40%" left="20%" icon="🐼" label="Panda Reserve" />
+                <MapHotspot top="70%" left="60%" icon="🍜" label="Noodle Hometown" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Today's Activity */}
+      <section className="py-8 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-red-800 mb-6 text-center">Try This Today!</h2>
+          
+          <div className="bg-yellow-100 p-6 rounded-lg shadow-md">
+            <div className="text-center mb-4">
+              <span className="text-4xl">✂️</span>
+            </div>
+            <h3 className="text-xl font-bold text-center mb-2">Make Paper Lanterns</h3>
+            <p className="text-center mb-4">Create colorful paper lanterns like those used in the Lantern Festival!</p>
+            <div className="text-center">
+              <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full shadow-md transition-colors">
+                Get Instructions
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Quick Quiz */}
+      <section className="py-8 px-6 bg-red-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-red-800 mb-6 text-center">Quick Quiz</h2>
+          
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-bold text-center mb-4">Which animal is NOT in the Chinese zodiac?</h3>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <QuizOption icon="🐯" label="Tiger" />
+              <QuizOption icon="🐼" label="Panda" isCorrect={true} />
+              <QuizOption icon="🐲" label="Dragon" />
+              <QuizOption icon="🐰" label="Rabbit" />
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Footer */}
+      <footer className="bg-red-800 text-white py-6 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-wrap justify-between">
+            <div className="w-full md:w-1/3 mb-6 md:mb-0">
+              <h3 className="font-bold text-lg mb-2">About Me</h3>
+              <p className="text-sm">Hi! I'm a kid who loves learning about Chinese culture and wanted to share what I've learned with other kids!</p>
+            </div>
+            
+            <div className="w-full md:w-1/3 mb-6 md:mb-0">
+              <h3 className="font-bold text-lg mb-2">Parents' Corner</h3>
+              <p className="text-sm">Information for parents and teachers about this educational website.</p>
+              <button className="text-sm bg-red-700 hover:bg-red-900 py-1 px-3 rounded mt-2 transition-colors">
+                Learn More
+              </button>
+            </div>
+            
+            <div className="w-full md:w-1/3">
+              <h3 className="font-bold text-lg mb-2">Connect</h3>
+              <div className="flex gap-4">
+                <div className="w-8 h-8 bg-red-700 rounded-full flex items-center justify-center">
+                  <Info size={16} />
+                </div>
+                <div className="w-8 h-8 bg-red-700 rounded-full flex items-center justify-center">
+                  <Book size={16} />
+                </div>
+                <div className="w-8 h-8 bg-red-700 rounded-full flex items-center justify-center">
+                  <Calendar size={16} />
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-6 pt-4 border-t border-red-700 text-center text-sm">
+            © 2025 China Discovery for Kids | Created with ❤️
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+// Component for navigation buttons
+function NavButton({ icon, label }) {
+  return (
+    <button className="flex items-center bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded transition-colors">
+      <span className="mr-1">{icon}</span>
+      <span>{label}</span>
+    </button>
+  );
+}
+
+// Component for feature cards
+function FeatureCard({ title, icon, description, color }) {
+  return (
+    <div className={`${color} p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow`}>
+      <div className="text-center mb-2">
+        <span className="text-4xl">{icon}</span>
+      </div>
+      <h3 className="text-lg font-bold text-center mb-2">{title}</h3>
+      <p className="text-center text-sm">{description}</p>
+      <div className="text-center mt-4">
+        <button className="bg-red-600 hover:bg-red-700 text-white text-sm py-1 px-4 rounded-full transition-colors">
+          Explore
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// Component for map hotspots
+function MapHotspot({ top, left, icon, label }) {
+  return (
+    <div className="absolute bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform" style={{ top, left }}>
+      <div className="flex flex-col items-center">
+        <span className="text-xl">{icon}</span>
+        <span className="absolute mt-12 text-xs font-bold bg-white px-2 py-1 rounded whitespace-nowrap">{label}</span>
+      </div>
+    </div>
+  );
+}
+
+// Component for quiz options
+function QuizOption({ icon, label, isCorrect }) {
+  return (
+    <button className="bg-blue-50 hover:bg-blue-100 p-4 rounded-lg shadow-sm flex flex-col items-center transition-colors">
+      <span className="text-4xl mb-2">{icon}</span>
+      <span className="font-medium">{label}</span>
+      {isCorrect && <span className="mt-2 text-xs text-green-600 font-bold">Correct Answer!</span>}
+    </button>
+  );
+}
